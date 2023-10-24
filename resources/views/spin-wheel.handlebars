@@ -1,0 +1,24 @@
+<div id="chart-wrap">
+        <img src="./halloweent-arrow.png" class="halloween-arrow" alt="" srcset="">
+        <img src="./circle-pumpkin.webp" onclick="spin()"  class="circle-pumpkin" alt="">
+        <div class="block-spin-wheel" onclick="handleBlockSpin()"></div>
+        <div id="chart"></div>
+</div>
+    <div id="question"><h1></h1></div>
+    <div class="spinwheel-overlay">
+        <div class="spinwheel-overlay-body">
+                <h2 class="spinwheel-overlay-header">Bạn đã hết lươt quay</h2>
+
+
+        </div>
+    </div>
+    
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js/spin-wheel.js"></script>
+    <script>
+        const urlSearchParams = new URLSearchParams(window.location.search);
+        let turn = Number(urlSearchParams.get('turn'));
+        function handleBlockSpin(){
+                
+        }
+    </script>

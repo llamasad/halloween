@@ -10,7 +10,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^7.1.2",
     "face-api.js": "^0.22.2",
-    "mongoose": "^7.6.2",
+    "mongoose": "^6.11.4",
     "mongoose-sequence": "^5.3.1",
     "node-gyp": "^9.4.0",
     "request": "^2.88.2"

@@ -14,7 +14,7 @@ async function handleOnChangeInput(ele) {
   $('.mb-overlay-body-wrap').show()
   $('#inputImg').get(0).src = img.src; 
   $('.mb-overlay').show();
-
+ 
 }
 
 

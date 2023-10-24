@@ -1,8 +1,9 @@
 <div class="mb-container">
+     <canvas id="screem-shoot"></canvas>
     <input class="mb-input-img--css" id="mb-input-img1"  type="file"   onchange="handleOnChangeInput(this)" accept=".jpg, .jpeg, .png">
     <label for="mb-input-img1" class="mb-label-img" >
       <img style="object-fit: cover; width:200px" src="/pumpkin.png" alt="" srcset="">  
-      <canvas id="screem-shoot"></canvas>
+     
     <span class="mb-pumbkin-text" >chọn 1 ảnh</span>
     </label>
 </div>
@@ -25,6 +26,12 @@
             </div>
         </div>
     </div>
+</div>
+<div class="mb-overlay-2"><img src="/skeletonDance.gif" alt="" class="mb-loading-img">
+<span class="mb-text-wait">WAIT A SECOND . . .</span>
+<span class="mb-text-notice">WAIT A SECOND . . .</span>
+<button type="button" onclick="this.style.display='none';location.reload()" class=" mb-btn-again">Thử Lại</button>
+
 </div>
  <script src="/js/bug-config.js"></script>
   <script src="/js/bug-config.js"></script>

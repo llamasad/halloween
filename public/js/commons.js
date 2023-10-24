@@ -32,7 +32,7 @@ try{  switch(type){
        return await axios[type](path,value);
        
    case 'get':
-       return await axios[type](path);
+       return await axios[type](path,value);
     default:
       return;
    }}
@@ -40,6 +40,62 @@ try{  switch(type){
     console.warn('axios error:'+error)
    }
 
+}
+
+async function drawLandMark(img){
+    if (!isFaceDetectionModelLoaded()) {
+      // setTimeout(drawLandMark,0)
+      console.log('error')
+      return
+    }
+
+    const options = getFaceDetectorOptions()
+
+    const results = await faceapi.detectAllFaces(img, options).withFaceLandmarks()
+    console.log(results)
+    const canvas = $('.dt-img-usr--landmark').get(0)
+    faceapi.matchDimensions(canvas, img)
+    const resizedResults = faceapi.resizeResults(results, img)
+
+
+      faceapi.draw.drawDetections(canvas, resizedResults)
+
+    faceapi.draw.drawFaceLandmarks(canvas, resizedResults)
+  
+}
+
+function renderUserUI(data){
+  $('.dt-upper-layout1').show()
+  const time=$('.dt-text--time');
+  const age=$('.dt-text--age');
+  const gender=$('.dt-text--gender')
+  const status =$('.dt-text--status')
+  const type= $('.dt-text--type')
+  const img=$('.dt-img-usr--none');
+  age.text(`${Number(data[0].age[0])-1}-${Number(data[0].age[0])+1}`)
+  time.text(data[0].createAt)
+  gender.text(data[0].gender[0])
+  status.text(data[0].status[0])
+  type.text(data[0].type)
+  img.attr("src", data[0].image)
+  $('#redirect-spin-wheel').attr('href',`./spinweel?turn=${data[0].type=='cos'?2:1}`)
+  $('.dt-img-usr--landmark1').attr("src", data[0].image)
+  drawLandMark(img.get(0))
+}
+function loopGetRequest(){
+  let counterSeq=Number(localStorage.getItem("counterSeq")); 
+  httpRequest('get','/api/userdata',{params:{counterSeq}}).then((res=>{
+    console.log(res.data)
+    if(res.data.valid==='notthing!'){
+      setTimeout(loopGetRequest,2000)
+    }
+    else if(res.data.valid==='success!'){
+      renderUserUI(res.data.result)
+      counterSeq=counterSeq+1;
+      localStorage.setItem("counterSeq",counterSeq)
+    }
+  })
+  )
 }
 
 

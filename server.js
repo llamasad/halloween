@@ -9,6 +9,8 @@ import * as handlebars from'express-handlebars';
 import * as sass from'sass';
 import  db from'./config/db/index.js';
 import { fileURLToPath } from 'url';
+import datauser from'./model/user-data.js'
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const app = express()
@@ -27,10 +29,9 @@ app.set('views',path.join(__dirname,'resources/views'))
 
 const viewsDir = path.join(__dirname, 'views')
 app.use(express.static(path.join(__dirname, './public')))
-app.use(express.static(path.join(__dirname, '../images')))
-app.use(express.static(path.join(__dirname, '../media')))
-app.use(express.static(path.join(__dirname, '../../weights')))
-app.use(express.static(path.join(__dirname, '../../dist')))
+app.use(express.static(path.join(__dirname, './dist')))
+app.use(express.static(path.join(__dirname, './weights')))
+
 
 route(app);
 app.post('/fetch_external_image', async (req, res) => {

@@ -37,19 +37,47 @@ function onInputSizeChanged(e) {
 }
 
 function handleSubmitImg(){
+  const queryString = window.location.search;
+  const btn=$('.mb-btn-again')
+  const loadImg=$('.mb-loading-img')
+  const loadContainer=$('.mb-overlay-2');
+  const textNotice=$('.mb-text-notice');
+  const textLoad=$('.mb-text-wait')
+  const urlSearchParams = new URLSearchParams(queryString);
   const canvas =$('#screem-shoot').get(0);
   const image=$('.mb-img-container').get(0);
+  
+  const searchQuery = urlSearchParams.get("type");
   const imgHeight=image.height;
   const imgWidth=image.width;
   canvas.height=imgHeight;
-  canvas.imgWidth=imgWidth;
+  canvas.width=imgWidth;
   const context = canvas.getContext('2d');
   context.drawImage(image, 0, 0,imgWidth,imgHeight)
   const resizedBase64Image = canvas.toDataURL('image/jpeg');
   image.src=resizedBase64Image;
-  console.log(imgWidth,imgHeight,image)
+  let uriImg=resizedBase64Image;
 
-  // httpRequest('post','/api/userdata',{uriImg})
+  httpRequest('post','/api/userdata',{uriImg,type:searchQuery}).then(res=>{
+    setTimeout(() => {
+      textLoad.hide()
+      if(res.data==='success'){
+        loadImg.get(0).src='/MissionDone.jpg'
+        textNotice.show()
+        textNotice.get(0).innerText='Thành Công vui lòng đợi 1 tí để server cập nhâp'
+      }
+      else{
+        btn.show();
+        loadImg.get(0).src='/confusingmeme.PNG'
+        textNotice.show();
+        textNotice.get(0).style.left='20px'
+        textNotice.get(0).style.color='#b89300'
+        textNotice.get(0).innerText='Không thể xác thực được khuôn mặt'
+      }
+      
+    }, 2000);
+  })
+  loadContainer.show();
 }
 
 function changeInputSize(size) {

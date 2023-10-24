@@ -67,7 +67,18 @@ h1{
     bottom: 0;
     background-color: rgba(44, 44, 44, 0.632);
     display: none;
+    overflow: scroll;
 
+}
+.spinwheel-overlay{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(44, 44, 44, 0.632);
+    display: none;
+    overflow: scroll;
 }
 .mb-overlay-body{
     border-radius: 10px;
@@ -83,7 +94,7 @@ h1{
 }
 .mb-img-container{
     width: 100%;
-    height: 460x;
+    max-height: 460x;
     object-fit: contain;
 }
 .mb-sm-img{
@@ -106,4 +117,199 @@ h1{
 }
 .mb-overlay-body-wrap{
     display: none   ;
+}
+.screem-shoot{
+}
+.block-spin-wheel{
+    display: none;
+    width: 500px;
+    height: 500px;
+    z-index: 1000;
+    position: absolute;
+    background-color: transparent;
+    top: 100px;
+    left: calc(50% - 260px);
+}
+#redirect-spin-wheel{
+    display: none;
+}
+.dt-img-usr--landmark{
+    margin-top: auto;
+    position: absolute;
+  top: 0;
+}
+.mb-overlay-2{
+    background-color: rgba(44, 44, 44, 0.632);
+    z-index: 3;
+    position: fixed;
+    top:0;
+    right:0;
+    left: 0;
+    bottom: 0;
+    display: none;
+    
+}
+.mb-loading-img{
+    width: calc(100% - 40px) ;
+    margin: 80px 20px 0;
+}
+.mb-text-wait{
+    font-family: 'halloween';
+    color: white;
+    position: absolute;
+    top:320px;
+    font-size: 20px;
+    left: calc(50% - 99px);
+}
+.dt-upper-layout1{display: none;}
+.mb-text-notice{
+    margin-top: 5px;
+    display: block;
+    position: relative;
+    font-family: 'halloween2'; 
+    color: rgb(0, 255, 13);
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    left: calc((100% - 312px)/2);
+    display: none;
+}
+.mb-btn-again{
+    border: none;
+    background-color: #e6c405;
+    border-radius: 4px;
+    width:72px;
+
+    position: absolute;
+    right: 20px;
+    display: none;
+    font-family: 'halloween2';
+}
+.dt-upper-layout{
+    position: fixed;
+    top:0;
+    right:0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(44, 44, 44, 0.632);
+}
+.dt-upper-layou-body{
+    display: flex;
+    padding: 30px;
+    background-color: white;
+    min-width:1000px;
+    width: 100px;
+    min-height: 700px;
+    margin: 60px auto;
+    border-radius: 10px;
+    position: relative;
+}
+.dt-btn-close{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+}
+.toast{
+    z-index: 10;
+    position: absolute;
+    left: calc(50% - 200px);
+    top: 100px;
+    
+}
+.dt-img-usr{
+    display: block;
+    max-width: 400px;
+    max-height: 365px;
+}
+.img-landmark-wrap{
+    position: relative;
+}
+.dt-img-usr + .dt-img-usr{
+    margin-top: 20px;
+}
+.dt-text-wrap{
+    margin-left:20px;
+}
+.dt-text{
+    font-family: 'halloween2';
+
+    display: block;
+    font-size: 32px;
+}
+.dt-img-usr-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.dt-header-text{
+    font-size: 40px;
+
+    font-family: 'halloween';
+}
+
+  svg {
+    min-width: 300px;
+    
+  }
+  
+  #button-trigger {
+    cursor: pointer;
+  }
+  #chart-wrap{
+    position:relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    top:0;
+    left:0;
+    
+}
+#question{
+    position: absolute;
+    width:400px;
+    height:500px;
+    top:0;
+    left:520px;
+}
+#question h1{
+    font-size: 50px;
+    font-weight: bold;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    top:50%;
+    -webkit-transform:translate(0,-50%);
+            transform:translate(0,-50%);
+}
+.halloween-arrow{
+    width: 150px;
+    position: absolute;
+    left:calc(50% + 220px);
+    top: 300px;
+
+}
+.spin-wheel-wrap{
+    position: absolute;
+    left: calc(50% - 250px );
+    top: 100px;
+}
+.circle-pumpkin{
+    z-index: 10;
+    position: absolute;
+    width: 120px;
+    left: calc(50% - 80px);
+    top:300px
+}
+.question{
+    display: none;
+}
+.hand{
+    opacity: 1 !important;
+}
+.takeagift{
+    position: relative;
+    top: 80px;
 }
