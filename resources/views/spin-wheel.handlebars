@@ -7,9 +7,13 @@
     <div id="question"><h1></h1></div>
     <div class="spinwheel-overlay">
         <div class="spinwheel-overlay-body">
-                <h2 class="spinwheel-overlay-header">Bạn đã hết lươt quay</h2>
-
-
+                <h2 class="spinwheel-overlay-header">Bạn đã hết lần quay</h2>
+                <img src="./meowhlw.gif" class="moew" alt="" srcset="">
+        </div>
+        <div class="spinwheel-overlay-body2">
+                <h2 class="spinwheel-overlay-header">Chúc Mừng</h2>
+                <p class="spinwheel-overlay-text">voucher 70% đồ ăn</p>
+                <img src="https://dotb.vn/wp-content/uploads/2020/12/6658860_preview.png" class="spinwheel-overlay-img" alt="" srcset="">
         </div>
     </div>
     
@@ -18,7 +22,23 @@
     <script>
         const urlSearchParams = new URLSearchParams(window.location.search);
         let turn = Number(urlSearchParams.get('turn'));
+        const overlay=$('.spinwheel-overlay');
+        const overlayBody=$('.spinwheel-overlay-body')
+        const overlayBody2=$('.spinwheel-overlay-body2')
+overlayBody.on('click',function(e){
+    e.stopPropagation();
+});
+overlayBody2.on('click',function(e){
+    e.stopPropagation();
+});
         function handleBlockSpin(){
-                
-        }
+            overlay.show();
+            overlayBody.show();
+        }   
+        
+        overlay.on('click',function(){
+            overlay.hide();
+            overlayBody.hide();
+            overlayBody2.hide();
+        })
     </script>

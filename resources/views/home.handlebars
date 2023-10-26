@@ -6,7 +6,7 @@
           </div>
       <h1 style="color: rgb(255, 255, 255);">SCAN QR</h1>
       <div style=" position: relative;width:400px;margin:0 auto;">
-      <img src="qr1.png" alt="">
+      <img src="qr1.png" style="position: absolute;left:0;top:0;width:400px;"  alt="">
       <img src="qr2.jpeg" class="qr-for-coser" style="position: absolute;left:0;top:0;width:400px;display:none;" alt="">
       </div>
 </div>
@@ -28,7 +28,7 @@
             <span class="dt-text">Tuổi: <span class="dt-text--age"></span></span>
             <span class="dt-text">Giới Tính: <span class="dt-text--gender"></span></span>
             <span class="dt-text">Đang cảm thấy: <span class="dt-text--status"></span></span>
-            <span class="dt-text takeagift">ấn vào phía dưới để nhận 2 lượt quay</span>
+            <span class="dt-text takeagift">ấn vào phía dưới để nhận 1 lần quay</span>
             <svg viewBox="0 0 948 948" aria-labelledby="uniqueTitleID uniqueDescID" role="img">
   <title id="uniqueTitleID">Halloween toast</title>
   <desc id="uniqueDescID">Click or touch the toaster button for a surprise!</desc>
@@ -174,7 +174,7 @@ Thoát sẽ mất dữ liệu bạn muốn thoát chứ ?
     <script src="js/bug-config.js"></script>
     <script src="js/open-gift.js"></script>
     <script>
-
+      let onclickValid=1;
 
       $(document).on('DOMContentLoaded', function(){
         Promise.all([faceapi.loadFaceLandmarkModel('/'),faceapi.nets.ssdMobilenetv1.load('/')]).then(() =>{
