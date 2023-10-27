@@ -226,7 +226,7 @@ h1{
     font-family: 'halloween2';
 }
 .dt-upper-layout{
-    overflow: scroll0;
+    overflow: scroll;
     position: fixed;
     top:0;
     right:0;

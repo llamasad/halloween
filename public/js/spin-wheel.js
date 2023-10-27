@@ -28,6 +28,7 @@ var padding = {top:20, right:40, bottom:0, left:0},
             .attr("transform", "translate(" + (w/2 + padding.left) + "," + (h/2 + padding.top) + ")");
         var vis = container
             .append("g");
+
             
         var pie = d3.layout.pie().sort(null).value(function(d){return 1;});
         // declare an arc generator function
@@ -38,7 +39,8 @@ var padding = {top:20, right:40, bottom:0, left:0},
             .enter()
             .append("g")
             .attr("class", "slice");
-            
+        let decent=[{cheat:0.6,value:1},{cheat:0.15,value:2},{cheat:0.15,value:5},{cheat:0.10,value:6}]
+
         arcs.append("path")
             .attr("fill", function(d, i){ return color(i); })
             .attr("d", function (d) { return arc(d); });
@@ -53,10 +55,32 @@ var padding = {top:20, right:40, bottom:0, left:0},
             .text( function(d, i) {
                 return data[i].label;
             });
+
+            function randomNumber(...ar) {
+        
+                // Lấy một số ngẫu nhiên từ 0 đến 1
+                const random = Math.random();
+                console.log(random)
+              console.log(ar,r)
+                // Trả về giá trị ngẫu nhiên dựa trên xác suất
+                switch (true) {
+                  case random < 0.1:
+                    return ar[3];
+                  case random < 0.25:
+                    return ar[2];
+                  case random < 0.4:
+                    return ar[1];
+                  default:
+                    return ar[0];
+
+                   ;
+                }
+              }
+              
         container.on("click", spin);
         function spin(d){
-            console.log(turn)
-            
+            let snake=Number(localStorage.getItem('ransanho'))
+        
             if(turn>0){container.on("click", null);
             //all slices have been seen, all done
             console.log("OldPick: " + oldpick.length, "Data length: " + data.length);
@@ -66,15 +90,19 @@ var padding = {top:20, right:40, bottom:0, left:0},
                 return;
             }
             turn--;
+            console.log(snake)
             var  ps       = 360/data.length,
                  pieslice = Math.round(1440/data.length),
-                 rng      = Math.floor((Math.random() * 1440) + 360);
-                
+                 rng      = Math.floor((snake==40?0.62:randomNumber(0.5,0.6,0.7,0.8))*1440+ 360);//0.5=keo,0.8== vocher nuoc,0.7=dayy bupc toc, 0.6vocher do an
+            
+                console.log(rng,ps)
             rotation = (Math.round(rng / ps) * ps);
             picked = Math.round(data.length - (rotation % 360)/ps);
-            picked = picked >= data.length ? (picked % data.length) : picked;
-            console.log(rotation,picked)
+            console.log(picked, (data.length - (rotation % 360)/ps ))
 
+            picked = picked >= data.length ? (picked % data.length) : picked;
+            console.log(picked)
+            localStorage.setItem('ransanho',++snake)
             if(oldpick.indexOf(picked) !== -1){
                 d3.select(this).call(spin);
                 return;
